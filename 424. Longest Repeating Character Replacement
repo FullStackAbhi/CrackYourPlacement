@@ -1,0 +1,23 @@
+var characterReplacement = function (s, k) {
+
+    let l = 0
+    let r = 0
+    let dict = {}
+    let maxLength = 0
+
+    for ( r = 0; r < s.length; r++) {
+        dict[s[r]] = dict[s[r]] + 1 || 1
+        console.log(dict)
+        maxLength = Math.max(maxLength, dict[s[r]])
+        console.log("ml",maxLength)
+        console.log("window",r - l + 1)
+        if (r - l + 1 - maxLength > k) {
+            dict[s[l]]--;
+            l++
+        }
+    }
+    return r - l
+
+
+
+};
